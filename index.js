@@ -87,6 +87,20 @@ async function run() {
         }
       });
 
+      // delete components 
+      app.delete("/component/:id", async (req, res) => {
+        try {
+          const id = req.params.id;
+          console.log("delete id : id");
+          const query = { _id: new ObjectId(id) };
+  
+          const result = await componentsCollection.deleteOne(query);
+          res.send(result);
+        } catch (err) {
+          console.log(err);
+        }
+      });
+
 
 
 
